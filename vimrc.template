@@ -1,0 +1,171 @@
+set nocompatible
+
+filetype off
+
+"=========================一般设置======================================= 
+set nocompatible          "vim比vi支持更多的功能，如showcmd，避免冲突和副作用，最好关闭兼容 
+set encoding=utf-8	  "使用utf-8编码 
+set number                "显示行号 
+set showcmd               "显示输入命令 
+set clipboard=unnamed,unnamedplus    "可以从vim复制到剪贴版中 
+set mouse=a               "可以在buffer的任何地方使用鼠标 
+set cursorline            "显示当前行 
+set hlsearch              "显示高亮搜索 
+"set incsearch 
+set history=100           "默认指令记录是20 
+set ruler                 "显示行号和列号（默认打开) 
+set pastetoggle=<F3>      "F3快捷键于paste模式与否之间转化，防止自动缩进 
+"set helplang=cn           "设置为中文帮助文档,需下载并配置之后才生效 
+ 
+ 
+"===========================文本格式排版================================o 
+set tabstop=4              "设置tab长度为4 
+set shiftwidth=4           "设置自动对齐的缩进级别 
+"set cindent                "自动缩进,以c语言风格，例如从if进入下一行，会自动缩进shiftwidth大小 
+"set smartindent            "改进版的cindent,自动识别以#开头的注释，不进行换行 
+set autoindent              "autoindent配合下面一条命令根据不同语言类型进行不同的缩进操作，更加智能 
+filetype plugin indent on 
+"set nowrap 
+ 
+"===========================选择solarized的模式========================== 
+syntax enable  
+syntax on 
+"solarzed的深色模式  
+"set background=dark 
+"solarized的浅色模式 
+"set background=light 
+"colorscheme solarized        "开启背景颜色模式 
+ 
+"===========================选择molokai的模式============================ 
+"let g:rehash256 = 1 
+let g:molokai_original = 1    "相较于上一个模式，个人比较喜欢此种模式 
+highlight NonText guibg=#060606 
+highlight Folded  guibg=#0A0A0A guifg=#9090D0 
+"set t_Co=256 
+"set background=dark 
+colorscheme  molokai 
+
+
+"==========================配置NerdTree============================
+" 将F2设置为开关NERDTree的快捷键
+map <f2> :NERDTreeToggle<cr>
+let g:NERDTreeNodeDelimiter = "\u00a0"
+" 修改树的显示图标
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+" 窗口位置
+let g:NERDTreeWinPos='left'
+" 窗口尺寸
+let g:NERDTreeSize=30
+" 窗口是否显示行号
+let g:NERDTreeShowLineNumbers=1
+" 不显示隐藏文件
+let g:NERDTreeHidden=0
+let g:nerdtree_tabs_open_on_console_startup=1
+
+"===========================配置Python-mode============================ 
+" 默认语言为python3
+"let g:pymode_python = 'python3'
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options = 1
+"显示允许的最大长度的列
+"let g:pymode_options_colorcolumn = 1
+""设置QuickFix窗口的最大，最小高度
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 10
+"使用python3
+"let g:pymode_python = 'python3'
+""使用PEP8风格的缩进
+let g:pymode_indent = 1
+"取消代码折叠
+"let g:pymode_folding = 0
+""开启python-mode定义的移动方式
+let g:pymode_motion = 1
+"启用python-mode内置的python文档，使用K进行查找
+"let g:pymode_doc = 1
+"let g:pymode_doc_bind = 'K'
+""自动检测并启用virtualenv
+let g:pymode_virtualenv = 1
+"不使用python-mode运行python代码
+let g:pymode_run = 0
+let g:pymode_run_bind = '<Leader>r'
+"不使用python-mode设置断点
+"let g:pymode_breakpoint = 0
+""let g:pymode_breakpoint_bind = '<leader>b'
+"启用python语法检查
+"let g:pymode_lint = 1
+""修改后保存时进行检查
+let g:pymode_lint_on_write = 0
+"编辑时进行检查
+"let g:pymode_lint_on_fly = 0
+"let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+""发现错误时不自动打开QuickFix窗口
+let g:pymode_lint_cwindow = 0
+"侧边栏不显示python-mode相关的标志
+"let g:pymode_lint_signs = 0
+""let g:pymode_lint_todo_symbol = 'WW'
+"let g:pymode_lint_comment_symbol = 'CC'
+""let g:pymode_lint_visual_symbol = 'RR'
+"let g:pymode_lint_error_symbol = 'EE'
+""let g:pymode_lint_info_symbol = 'II'
+"let g:pymode_lint_pyflakes_symbol = 'FF'
+""启用重构
+let g:pymode_rope = 1
+"不在父目录下查找.ropeproject，能提升响应速度
+"let g:pymode_rope_lookup_project = 0
+""光标下单词查阅文档
+let g:pymode_rope_show_doc_bind = '<C-c>d'
+"项目修改后重新生成缓存
+"let g:pymode_rope_regenerate_on_write = 1
+""开启补全，并设置<C-Tab>为默认快捷键
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot = 1
+let g:pymode_rope_completion_bind = '<C-Tab>'
+"<C-c>g跳转到定义处，同时新建竖直窗口打开
+"let g:pymode_rope_goto_definition_bind = '<C-c>g'
+"let g:pymode_rope_goto_definition_cmd = 'vnew'
+""重命名光标下的函数，方法，变量及类名
+let g:pymode_rope_rename_bind = '<C-c>rr'
+"重命名光标下的模块或包
+"let g:pymode_rope_rename_module_bind = '<C-c>r1r'
+""开启python所有的语法高亮
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+"高亮缩进错误
+"let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+""高亮空格错误
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()            " required
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'python-mode/python-mode', { 'branch': 'develop'  }
+Plug 'w0rp/ale'
+Plug 'scrooloose/nerdcommenter'
+Plug 'cjrh/vim-conda'
+
+call plug#end()"
+
+
+set runtimepath+=~/.vim_runtime
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
